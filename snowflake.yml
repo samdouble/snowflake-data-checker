@@ -4,7 +4,9 @@ definition_version: 2
 entities:
   pkg:
     type: application package
-    identifier: <% fn.concat_ids('snowflake_data_checker_pkg', ctx.env.suffix) %>
+    stage: stage_content.snowflake_data_checker_stage
+    identifier: snowflake_data_checker_pkg
+    manifest: app/manifest.yml
     artifacts:
       - src: app/*
         dest: ./
@@ -13,7 +15,5 @@ entities:
     type: application
     from:
       target: pkg
-    identifier: <% fn.concat_ids('snowflake_data_checker', ctx.env.suffix) %>
-
-env:
-  suffix: <% fn.concat_ids('_', fn.sanitize_id(fn.get_username('unknown_user')) | lower) %>
+    identifier: snowflake_data_checker
+    debug: false

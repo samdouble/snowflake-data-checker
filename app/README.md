@@ -1,4 +1,4 @@
-## Welcome to your First Snowflake Native App!
+# snowflake-data-checker
 
 In this Snowflake Native App, you will be able to explore some basic concepts such as application role, versioned schemas and creating procedures and functions within a setup script.
 

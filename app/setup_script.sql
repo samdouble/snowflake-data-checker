@@ -1,11 +1,16 @@
--- This is the setup script that runs while installing a Snowflake Native App in a consumer account.
--- To write this script, you can familiarize yourself with some of the following concepts:
--- Application Roles
--- Versioned Schemas
--- UDFs/Procs
--- Extension Code
--- Refer to https://docs.snowflake.com/en/developer-guide/native-apps/creating-setup-script for a detailed understanding of this file.
-
 create or alter versioned schema core;
 
--- The rest of this script is left blank for purposes of your learning and exploration.
+create application role if not exists app_public;
+create schema if not exists core;
+grant usage on schema core to application role app_public;
+
+create or replace procedure core.hello()
+  returns string
+  language sql
+  execute as owner
+  as
+  begin
+    return 'Hello Snowflake!';
+  end;
+
+grant usage on procedure core.hello() to application role app_public;
