@@ -1,8 +1,15 @@
+# snowflake-data-checker
+
 ## Introduction
+
+[![CI](https://github.com/samdouble/snowflake-data-checker/actions/workflows/checks.yml/badge.svg)](https://github.com/samdouble/snowflake-data-checker/actions/workflows/checks.yml)
+[![npm version](https://img.shields.io/npm/v/snowflake-data-checker.svg?style=flat)](https://www.npmjs.org/package/snowflake-data-checker)
+[![Coverage Status](https://coveralls.io/repos/samdouble/snowflake-data-checker/badge.svg?branch=master&service=github)](https://coveralls.io/github/samdouble/snowflake-data-checker?branch=master)
 
 This is the basic project template for a Snowflake Native App project. It contains minimal code meant to help you set up your first application object in your account quickly.
 
 ### Project Structure
+
 | File Name                   | Purpose                                             |
 | --------------------------- | --------------------------------------------------- |
 | README.md                   | The current file you are looking at, meant to guide you through a Snowflake Native App project. |
