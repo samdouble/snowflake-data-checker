@@ -18,18 +18,27 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      # - name: Install
-      #   run: |
-      #     npm install
-      # - name: Lint
-      #   run: |
-      #     npm run lint
-      # - name: Audit
-      #   run: |
-      #     npm run audit -- --moderate=6 --high=6
-      # - name: Test
-      #   run: |
-      #     npm test
-      # - name: Build
-      #   run: |
-      #     npm run build
+      - name: Install
+        run: |
+          pip install -U poetry
+          poetry install --no-root
+      - name: Lint
+        run: |
+          poetry run ruff check .
+      - name: Format
+        run: |
+          poetry run ruff format .
+      - name: Type check
+        run: |
+          poetry run mypy .
+      - name: Create requirements.txt for Audit
+        run: |
+          poetry self add poetry-plugin-export
+          poetry export -f requirements.txt --output requirements.txt
+      - name: Audit
+        uses: pypa/gh-action-pip-audit@v1.1.0
+        with:
+          inputs: requirements.txt
+      - name: Test
+        run: |
+          poetry run pytest
